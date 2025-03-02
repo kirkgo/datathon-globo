@@ -122,7 +122,7 @@ python scripts/processar_dados.py
 
 ### 2. Treinamento dos Embeddings
 
-**Arquivo:** `scripts/treinar_embeddings.py`  
+**Arquivo:** `scripts/treina_modelo.py`  
 **Objetivo:** Gerar embeddings das notícias utilizando o modelo **all-MiniLM-L6-v2**.
 
 **Principais etapas:**
@@ -132,7 +132,7 @@ python scripts/processar_dados.py
 
 **Execução:**
 ```bash
-python scripts/treinar_embeddings.py
+python scripts/treina_modelo.py
 ```
 
 ---
