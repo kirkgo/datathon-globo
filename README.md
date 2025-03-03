@@ -3,6 +3,11 @@
 ## Objetivo
 Desenvolver um sistema de recomendação de notícias para o portal G1 predizendo qual será a próxima notícia que o usuário vai ler.  
 
+***Importante:***
+
+- Como lidar com o cold-start? Usuários ou itens com poucas informações devem ser tratados de forma diferenciada em relação a perfis mais completos? 
+- O conceito de recência é essencial para garantir que as recomendações de notícias sejam relevantes e oportunas. 
+
 ---
 
 ## Estratégia de Recomendacão Empregada
@@ -14,9 +19,9 @@ Utilizamos um **modelo híbrido** que combina:
 3. **Modelo de Similaridade do Tipo Item-Item** usando similaridade de cosseno.
 4. **Recomendação Híbrida para Cold-Start de Usuários** (notícias populares + recentes + exploratórias).
 
-### Porque foi empregado um modelo híbrido? 
+### Porque um modelo híbrido? 
 
-Vamos dar uma olhada nos dois cenários princinpais que mapeamos, seus desafios e possíveis soluções: 
+Vamos dar uma olhada nos dois cenários princinpais, seus desafios e possíveis soluções: 
 
 **Cenário 1: Cold-start para Itens (Notícias Novas)**
 
@@ -52,9 +57,10 @@ Foi por isso que criamos uma estratégia híbrida: para combinar múltiplas abor
 - Cada notícia é transformada em um vetor de 384 dimensões, permitindo cálculos rápidos de similaridade.
 
 **Cálculo da Similaridade**:
-$$
+
+```math
 sim(A, B) = \frac{A \cdot B}{||A|| \times ||B||}
-$$
+```
 
 Ainda com relação ao modelo escolhido, ele apresenta um bom equilibrio entre precisão e eficiência computacional. 
 
@@ -87,15 +93,16 @@ Quando um usuário não tem histórico de leitura, usamos a seguinte estratégia
 3. **Notícias Explorátorias**: Sorteio de clusters para diversidade.
 
 O **score final** de cada notícia é definido por:
-$$
+
+```math
 Score = \alpha \times Popularidade + \beta \times Recência + \gamma \times Diversidade
-$$
+```
 
 Onde:
-$$
-\alpha, \beta, \gamma \text{ são hiperparâmetros ajustáveis.}
-$$
 
+```math
+\alpha, \beta, \gamma \text{ são hiperparâmetros ajustáveis.}
+```
 
 ---
 
@@ -105,7 +112,7 @@ O pipeline do projeto foi dividido em **quatro etapas** principais: **processame
 
 ### 1. Processamento dos Dados
 
-**Arquivo:** `scripts/processar_dados.py`  
+**Arquivo:** `scripts/processa_dados.py`  
 **Objetivo:** Limpar e organizar os dados brutos das notícias.  
 
 **Principais etapas:**
@@ -115,7 +122,7 @@ O pipeline do projeto foi dividido em **quatro etapas** principais: **processame
 
 **Execução:**
 ```bash
-python scripts/processar_dados.py
+python scripts/processa_dados.py
 ```
 
 ---
@@ -139,7 +146,7 @@ python scripts/treina_modelo.py
 
 ### 3. Clusterização das Notícias
 
-**Arquivo:** `scripts/clusterizar_noticias.py`  
+**Arquivo:** `scripts/clusteriza_noticias.py`  
 **Objetivo:** Aplicar **K-Means** nos embeddings para agrupar notícias em clusters.
 
 **Principais etapas:**
@@ -149,7 +156,7 @@ python scripts/treina_modelo.py
 
 **Execução:**
 ```bash
-python scripts/clusterizar_noticias.py
+python scripts/clusteriza_noticias.py
 ```
 
 ---
