@@ -110,7 +110,7 @@ Onde:
 
 O pipeline do projeto foi dividido em **quatro etapas** principais: **processamento**, **treinamento dos embeddings**, **clusterização** e **implementação da API**.
 
-#### ATENÇÃO: Faça o download dos itens e dos dados de treino no link abaixo e coloque em suas respectivas pastas: "itens -> data/itens" e "treino -> data/treino".
+#### ATENÇÃO: Faça o download dos dados dos itens e dos treinos no link abaixo e coloque na pasta data/itens e data/treino. 
 
 ***Link para Download:*** https://drive.google.com/file/d/13rvnyK5PJADJQgYe-VbdXb7PpLPj7lPr/view
 
